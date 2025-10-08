@@ -8,7 +8,7 @@
     "build": "tsc",
     "lint": "echo 'Lint placeholder - add ESLint later'",
     "typecheck": "tsc --noEmit",
-    "test": "node dist/index.test.js || true",
+    "test": "node dist/index.test.js",
     "verify": "pnpm lint && pnpm typecheck && pnpm build && pnpm test"
   },
   "keywords": [
