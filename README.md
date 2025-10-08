@@ -1,4 +1,5 @@
-repo-template-public
+# Dev Standards
+## Public Repo Template
 
 A public GitHub template repository that bakes in DevOps hygiene and optional AI assistance. Use it to start any Node/TypeScript project with:
 	•	✅ CI pipeline (pnpm, Node 20): lint → typecheck → test → build
