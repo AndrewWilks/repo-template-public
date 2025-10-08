@@ -89,6 +89,14 @@ pnpm verify
 # 4) Build & run the sample script
 pnpm build && node dist/index.js
 
+**✅ Initial Setup Complete!** The repository structure is now initialized with:
+- Base directories: `src/`, `docs/`, `configs/`, `scripts/` (with `.gitkeep` files)
+- Working TypeScript build system (`tsconfig.json`, `package.json`)
+- Sample code in `src/index.ts` that compiles and runs successfully
+- Placeholder test in `src/index.test.ts`
+
+Next steps: Add CI workflows, linting, security scanning, and other files per PROJECT_GUIDE.md.
+
 Use this as a template: Click Use this template on GitHub (top‑right) or fork, then rename the repo and replace <owner>/<repo> in the badges above.
 
 ⸻
