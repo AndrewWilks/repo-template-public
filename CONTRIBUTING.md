@@ -95,6 +95,7 @@ Participation is governed by the [Code of Conduct](CODE_OF_CONDUCT.md). Behavior
 Do not file public issues for vulnerabilities. Follow the private reporting process in [SECURITY.md](SECURITY.md).
 
 ## Getting Help
+
 Open a discussion or issue for architecture questions or improvement ideas. For commit style help, see the VS Code extensions below.
 
 ## Recommended VS Code Extensions
