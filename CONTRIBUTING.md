@@ -94,6 +94,32 @@ Participation is governed by the [Code of Conduct](CODE_OF_CONDUCT.md). Behavior
 
 Do not file public issues for vulnerabilities. Follow the private reporting process in [SECURITY.md](SECURITY.md).
 
+## License & Inbound Contributions
+
+By submitting a contribution (code, docs, config, or other materials) you agree that:
+
+- You have the right to submit it under the project license (Apache-2.0).
+- Unless you explicitly state otherwise, any contribution intentionally submitted for inclusion in the project shall be licensed under the same Apache License, Version 2.0, without additional terms or conditions. (This mirrors the clause already present in the LICENSE text for clarity.)
+- If you include third‑party code, you will note its license and attribution requirements in the PR and, if needed, add an entry to `NOTICE`.
+
+### Attribution (Nice, Not Required)
+
+If you fork or base a new public template/project on this repository, a short note such as:
+
+> Based on <https://github.com/AndrewWilks/repo-template-public>
+
+…is much appreciated (but not mandatory under Apache-2.0). Please keep the original `LICENSE` (and update `NOTICE` if you add attributions).
+
+### Optional: DCO Sign-Off
+
+If you prefer a Developer Certificate of Origin trail, you may add a Signed-off-by line to each commit:
+
+```text
+Signed-off-by: Your Name <you@example.com>
+```
+
+Use `git commit -s` to append automatically. (Not enforced at present.)
+
 ## Getting Help
 
 Open a discussion or issue for architecture questions or improvement ideas. For commit style help, see the VS Code extensions below.

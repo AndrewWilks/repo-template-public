@@ -41,6 +41,7 @@ Case study and docs: see `docs/case-study/commitlint-case-study.md` for an in-de
     - [Conventional Commits](#conventional-commits)
   - [Roadmap](#roadmap)
   - [FAQ](#faq)
+  - [Using this template](#using-this-template)
   - [License](#license)
 
 ---
@@ -229,8 +230,16 @@ It’s permissive with an explicit patent grant — friendly for employers. Swit
 **Can I use this for non‑Node projects?**  
 Yes. Replace the scripts and TypeScript config; keep the workflows and docs.
 
+## Using this template
+
+You can copy, fork, and strip down anything here under Apache-2.0. Attribution is appreciated but not required. If you keep a credit, something like:
+
+> Based on <https://github.com/AndrewWilks/repo-template-public>
+
+Please retain the `LICENSE` file and update `NOTICE` if you add third‑party components needing attribution.
+
 ## License
 
 Copyright © 2025 Andrew Wilks.
 
-Licensed under the Apache License 2.0. See [LICENSE](LICENSE) for details.
+Licensed under the Apache License 2.0. See [LICENSE](LICENSE) for full terms and [NOTICE](NOTICE) for attribution updates.
