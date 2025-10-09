@@ -11,6 +11,7 @@
     "typecheck": "tsc --noEmit",
     "commitlint": "commitlint --from=origin/main --to=HEAD --verbose",
     "commitlint:msg": "commitlint --edit \"$1\"",
+    "spell": "cspell \"docs/**\" \"src/**\" \"*.md\"",
     "cz": "cz",
     "test": "node dist/index.test.js",
     "verify": "pnpm lint && pnpm typecheck && pnpm build && pnpm test"
@@ -28,11 +29,13 @@
   "devDependencies": {
     "@commitlint/cli": "^20.1.0",
     "@commitlint/config-conventional": "^20.0.0",
+    "@cspell/dict-en-au": "^1.1.7",
     "@types/node": "^24.7.0",
-    "husky": "^9.1.7",
-    "typescript": "^5.9.3",
     "commitizen": "^4.2.5",
-    "cz-conventional-changelog": "^3.3.0"
+    "cspell": "^9.2.1",
+    "cz-conventional-changelog": "^3.3.0",
+    "husky": "^9.1.7",
+    "typescript": "^5.9.3"
   },
   "config": {
     "commitizen": {
