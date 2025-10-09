@@ -6,7 +6,7 @@ updates:
       interval: "weekly"
       day: "monday"
       time: "04:00"
-      timezone: "Etc/UTC"
+      timezone: "Australia/Brisbane"
     open-pull-requests-limit: 5
     rebase-strategy: auto
     commit-message:
@@ -15,6 +15,6 @@ updates:
     labels:
       - "dependencies"
       - "security"
-  # Optionally set assignees or reviewers later (fields omitted for now to satisfy schema)
-  # Optionally ignore large frameworks until explicitly upgraded
     ignore: []
+    # Optionally set assignees or reviewers later (fields omitted for now to satisfy schema)
+    # Optionally ignore large frameworks until explicitly upgraded
