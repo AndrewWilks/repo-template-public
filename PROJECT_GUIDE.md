@@ -269,7 +269,7 @@ Manual release checklist
 ## 14. Troubleshooting
 
 - PR guard fails: Ensure the PR body contains a ## Changelog section. For suggested text, invoke Copilot Chat or use PR summary generation.
-- ai‑changelog doesn’t open a PR: Ensure the workflow has contents: write permissions and the default GITHUB_TOKEN is available. Also check that fetch-depth: 0 is set for actions/checkout.
+- AI changelog workflow doesn’t open a PR: Ensure the workflow has contents: write permissions and the default GITHUB_TOKEN is available. Also check that fetch-depth: 0 is set for actions/checkout. If using Copilot-based automation, verify Copilot permissions and configuration.
 - CI step keeps passing even with problems: Some steps are initially non‑blocking (|| true). Remove those once linters/tests are configured.
 - CodeQL not scanning: Go to Security → Code scanning alerts → “Set up” and ensure the workflow is enabled on main.
 
