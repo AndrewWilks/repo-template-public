@@ -23,16 +23,16 @@ If a section has no entries for a release, omit it in that release block (keep i
 
 ## Mapping Commit Types → Categories
 
-| Commit Type (Conventional) | Typical Changelog Section | Notes |
-|----------------------------|---------------------------|-------|
+| Commit Type (Conventional) | Typical Changelog Section | Notes                                                    |
+| -------------------------- | ------------------------- | -------------------------------------------------------- |
 | feat                       | Added / Changed           | Added if new surface; Changed if enhancement to existing |
-| fix                        | Fixed                     | Security if vulnerability |
-| perf                       | Changed                   | If user‑visible; otherwise may omit |
-| refactor                   | (Usually omit) / Changed  | Include only if user behavior or API affected |
-| docs                       | (Omit)                    | Unless docs shipped as part of feature |
-| chore / ci / build         | (Omit)                    | Unless impacts consumers (e.g., drop Node version) |
-| deps (chore/deps)          | Changed / Security        | Security if addressing a CVE |
-| revert                     | Changed / Removed         | Describe net effect |
+| fix                        | Fixed                     | Security if vulnerability                                |
+| perf                       | Changed                   | If user‑visible; otherwise may omit                      |
+| refactor                   | (Usually omit) / Changed  | Include only if user behavior or API affected            |
+| docs                       | (Omit)                    | Unless docs shipped as part of feature                   |
+| chore / ci / build         | (Omit)                    | Unless impacts consumers (e.g., drop Node version)       |
+| deps (chore/deps)          | Changed / Security        | Security if addressing a CVE                             |
+| revert                     | Changed / Removed         | Describe net effect                                      |
 
 ## Writing Rules
 
@@ -59,16 +59,21 @@ If a section has no entries for a release, omit it in that release block (keep i
 
 ```markdown
 ## [1.4.0] - 2025-11-03
+
 ### Added
+
 - Add CSV importer for broker statements (#142)
 
 ### Changed
+
 - Change default log level to 'info' (was 'warn') (#155)
 
 ### Fixed
+
 - Fix race condition in cache warm logic (#151)
 
 ### Security
+
 - Bump jsonwebtoken to 9.0.2 (GHSA-xxxx) (#160)
 ```
 
