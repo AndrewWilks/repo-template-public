@@ -15,17 +15,23 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v3
+        with:
+          version: 9
+          run_install: false
+
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 20
           cache: pnpm
 
-      - name: Enable pnpm (Corepack)
-        run: corepack enable && corepack prepare pnpm@latest --activate
+      - name: Enable Corepack (ensure global pnpm shim)
+        run: corepack enable
 
       - name: Install dependencies
-        run: pnpm install
+        run: pnpm install --frozen-lockfile
 
       - name: Lint (placeholder)
         run: pnpm lint
