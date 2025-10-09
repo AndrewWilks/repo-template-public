@@ -10,13 +10,13 @@ image: /docs/case-study/images/hook-output.png
 sidebar_label: "Commitlint case study"
 ---
 
-# Case study — Enforcing Conventional Commits for repo-template-public
+# Case study - Enforcing Conventional Commits for repo-template-public
 
-How I enforced Conventional Commits across this template repository while keeping the developer experience friendly — and the exact patterns you can copy in under ten minutes.
+How I enforced Conventional Commits across this template repository while keeping the developer experience friendly - and the exact patterns you can copy in under ten minutes.
 
 ## Overview
 
-Readable, structured commit history is leverage: cleaner diffs, quicker reviews, safer release notes, and automation hooks (changelogs, semantic versioning, dashboards) that _just work_. The trade‑off most teams fear is friction. This case study shows how I set up **layered enforcement** that is: (1) friendly at author time, (2) firm at commit time, and (3) trust–but–verify in CI — without bikeshedding or slowing people down.
+Readable, structured commit history is leverage: cleaner diffs, quicker reviews, safer release notes, and automation hooks (changelogs, semantic versioning, dashboards) that _just work_. The trade‑off most teams fear is friction. This case study shows how I set up **layered enforcement** that is: (1) friendly at author time, (2) firm at commit time, and (3) trust–but–verify in CI - without bikeshedding or slowing people down.
 
 Instead of aiming for theoretical purity, I optimised for _practical adoption_. For example, over‑long headers are a warning, not a failure; subject casing rules are relaxed (developers can keep their muscle memory); and the hook output is colourful, descriptive, and self‑serving (links + examples) so you rarely need to read external docs.
 
@@ -46,12 +46,12 @@ At the centre: **commitlint** with `@commitlint/config-conventional` plus a few 
 
 Key repo touch‑points:
 
-- `.commitlintrc.cjs` — rule customisation & note keywords.
-- `.husky/commit-msg` — rich, colourised failure UX.
-- `.vscode/extensions.json` — pre‑recommended extensions (auto prompts).
+- `.commitlintrc.cjs` - rule customisation & note keywords.
+- `.husky/commit-msg` - rich, colourised failure UX.
+- `.vscode/extensions.json` - pre‑recommended extensions (auto prompts).
 - `package.json` scripts: `commitlint`, `commitlint:msg`, `cz`.
-- `.github/workflows/commitlint.yml` — PR safety net (fetch-depth: 0).
-- `CONTRIBUTING.md` — quick onboarding and local command examples.
+- `.github/workflows/commitlint.yml` - PR safety net (fetch-depth: 0).
+- `CONTRIBUTING.md` - quick onboarding and local command examples.
 
 ## Commitlint rules (core)
 
@@ -80,7 +80,7 @@ module.exports = {
         "revert",
       ],
     ],
-    // Scope & subject case are intentionally relaxed — lower friction for forks.
+    // Scope & subject case are intentionally relaxed - lower friction for forks.
     "scope-case": [0, "always", []],
     "subject-case": [0, "never"],
     // Non-empty subject is a hard requirement; blank commits destroy history utility.
@@ -99,7 +99,7 @@ module.exports = {
 
 Why these deliberate _relaxations_?
 
-- Case rules (scope/subject) are the most common source of frustration — disabled.
+- Case rules (scope/subject) are the most common source of frustration - disabled.
 - Length warnings nudge better messages without blocking flow.
 - Extended type list ensures parity with build/infra changes (`build`, `ci`) and reversions (`revert`).
 - Explicit `noteKeywords` supports multi-form BREAKING CHANGE footers for consistent release tooling later.
@@ -120,7 +120,7 @@ Snippet (abridged for readability):
 ```bash
 npx --no-install commitlint --edit "$1" || {
   # colour codes + helpful pattern + examples + links
-  printf "✖ Invalid commit message — commitlint failed.\n"
+  printf "✖ Invalid commit message - commitlint failed.\n"
   printf "    <type>[optional scope]: <short description>\n\n"
   printf "Examples:\n  feat(api): add CSV import\n  fix(auth): handle expired tokens\n"
   # re-run for diagnostics
@@ -131,16 +131,16 @@ npx --no-install commitlint --edit "$1" || {
 
 > UX Note: Humans copy what they see. Providing _good_ examples directly in the failure output yields higher adoption than linking to a wiki doc.
 
-Placeholder screenshot (replace with a real capture):
+Real failing hook output (captured from an intentionally bad commit message `"bad commit message"`):
 
-![hook-output-placeholder](./images/hook-output.png)
+![hook-output](./images/hook-output.png)
 
 ## Editor experience & Commitizen
 
 Two VS Code recommendations auto-prompt on open:
 
-- `niieani.vscode-commitlint` — inline validation as you type in the Source Control panel.
-- `vivaxy.vscode-conventional-commit` — quick‑pick UI & snippet templates.
+- `niieani.vscode-commitlint` - inline validation as you type in the Source Control panel.
+- `vivaxy.vscode-conventional-commit` - quick‑pick UI & snippet templates.
 
 Optional guided flow (Commitizen):
 
@@ -150,7 +150,7 @@ pnpm cz
 
 ## CI safety net
 
-Hooks are _advisory_ — developers can amend, squash, or use `--no-verify`. CI is the immutable layer. The workflow:
+Hooks are _advisory_ - developers can amend, squash, or use `--no-verify`. CI is the immutable layer. The workflow:
 
 1. Checks out full history (`fetch-depth: 0`) so commitlint can compute ranges.
 2. Uses `pnpm` via Corepack (guaranteed versioned installs).
@@ -213,7 +213,7 @@ pnpm add -D @commitlint/cli @commitlint/config-conventional husky commitizen cz-
 }
 ```
 
-1. Create the basic `commitlint` config (`.commitlintrc.cjs`) — you can copy the file from this template. Example compact rules:
+1. Create the basic `commitlint` config (`.commitlintrc.cjs`) - you can copy the file from this template. Example compact rules:
 
 ```javascript
 module.exports = {
@@ -272,10 +272,10 @@ pnpm cz
 
 ### Notes
 
-- Different package manager? Swap `pnpm` for `npm`/`yarn` — semantics unchanged.
+- Different package manager? Swap `pnpm` for `npm`/`yarn` - semantics unchanged.
 - Spell checking: project word list (`cspell.json`) prevents noisy failures (keep commit type words, tool names, local domain terms).
 - Docusaurus/blog: retain frontmatter for proper listing & metadata enrichment.
-- Teaching hooks beat strict hooks — optimise for _first correct commit_, not _first failed commit_.
+- Teaching hooks beat strict hooks - optimise for _first correct commit_, not _first failed commit_.
 
 ## Results & trade‑offs
 
@@ -298,7 +298,7 @@ Keep it healthy:
 
 - `prepare` script guarantees hook install on every fresh clone.
 - Full history fetch in CI (fetch-depth: 0) is non‑negotiable for accurate range diffing.
-- Future Husky v10+ change? Hook already avoids sourcing legacy `husky.sh` — forward friendly.
+- Future Husky v10+ change? Hook already avoids sourcing legacy `husky.sh` - forward friendly.
 - Add a release automation layer (Changesets or semantic‑release) once commit discipline is stable; existing types map cleanly.
 - Introduce a _contrib docs_ section listing common scopes once organic patterns emerge (avoid premature taxonomy design).
 
@@ -321,4 +321,4 @@ Troubleshooting quick hits:
 
 **TL;DR**: Layering gentle guidance (editor) → assertive help (hook) → definitive enforcement (CI) yields a compliant history _without_ developer resentment. Adopt the pattern, tune only where your domain needs precision, and add automation (release/version bumping) once the human loop is frictionless.
 
-Feel free to copy, adapt, and iterate — attribution appreciated but not required.
+Feel free to copy, adapt, and iterate - attribution appreciated but not required.

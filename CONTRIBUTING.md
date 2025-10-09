@@ -19,6 +19,8 @@ pnpm install
 
 We use Conventional Commits. Commit messages are validated by `commitlint` on every commit via Husky. If your commit is blocked, follow the guidance printed in the commit hook output or use the recommended VS Code extensions to author messages.
 
+Need the full background and rationale? See the detailed case study: [`docs/case-study/commitlint-case-study.md`](docs/case-study/commitlint-case-study.md).
+
 Local checks:
 
 - Check commits in your branch against `origin/main`:

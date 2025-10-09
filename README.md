@@ -155,6 +155,8 @@ Code of Conduct: [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md)
 
 This repository follows the Conventional Commits convention and enforces it with `commitlint` using the `@commitlint/config-conventional` ruleset (see `.commitlintrc.cjs`).
 
+Looking for the deeper rationale, rule tuning, UX decisions, and CI layering? Read the dedicated case study at [`docs/case-study/commitlint-case-study.md`](docs/case-study/commitlint-case-study.md).
+
 Commit message format (one-line header):
 
 ```text
