@@ -44,7 +44,7 @@ Stretch goal: Keep the config _approachable_ so forks and downstream consumers a
 
 At the centre: **commitlint** with `@commitlint/config-conventional` plus a few deliberate deviations to reduce friction. Then Husky wires a `commit-msg` hook; Commitizen provides an optional guided flow; CI re-validates every PR (full history fetch) to eliminate trust gaps.
 
-Key repo touch‑points:
+Key repo touch-points:
 
 - `.commitlintrc.cjs` - rule customisation & note keywords.
 - `.husky/commit-msg` - rich, colourised failure UX.
