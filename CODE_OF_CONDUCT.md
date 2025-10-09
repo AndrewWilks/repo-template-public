@@ -45,7 +45,7 @@ Instances of abusive, harassing, or otherwise unacceptable behavior may be repor
 confidentially as described in [SECURITY.md](SECURITY.md). If your concern is not a security
 issue, you may also email the maintainers (replace the placeholder below):
 
-<security-contact@example.com>
+<me@andrewwilks.au>
 
 Please include:
 

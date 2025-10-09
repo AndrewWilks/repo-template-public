@@ -10,7 +10,7 @@ for security updates while the template is actively maintained.
 ## Reporting a Vulnerability
 
 1. DO NOT open a public issue for a suspected vulnerability.
-2. Email the maintainers privately at: <security-contact@example.com>
+2. Email the maintainers privately at: <me@andrewwilks.au>
    (Replace with a real security contact address for your fork / deployment.)
 3. Provide a clear description: impact, affected files / functions, and steps to reproduce.
 4. (Optional) Include a minimal proof of concept (PoC). Avoid exploits that could cause data loss.
@@ -44,4 +44,5 @@ Use regular Issues / Discussions for bugs, feature requests, or usability improv
 If you require encrypted email, publish a PGP key for the security contact in your fork.
 
 ## Related Documents
+
 [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md) • [CONTRIBUTING.md](CONTRIBUTING.md)
