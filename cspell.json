@@ -45,6 +45,7 @@
     "corepack",
     "rollouts",
     "summarise",
-    "summarisation"
+    "summarisation",
+    "bikeshedding"
   ]
 }
