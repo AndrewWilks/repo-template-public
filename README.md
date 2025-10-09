@@ -20,12 +20,13 @@ A public GitHub template repository that bakes in DevOps hygiene and optional AI
 New here? Read the detailed design/build guide: [PROJECT_GUIDE.md](PROJECT_GUIDE.md)
 
 ---
+
 ## Table of Contents
 
 - [What’s inside](#whats-inside)
 - [Quickstart](#quickstart)
 - [Scripts](#scripts)
-- [AI features (optional)](#ai-features-optional)
+- [Copilot features (optional)](#copilot-features-optional)
 - [CI/CD](#cicd)
 - [Security](#security)
 - [Changelog & releases](#changelog--releases)
@@ -35,6 +36,7 @@ New here? Read the detailed design/build guide: [PROJECT_GUIDE.md](PROJECT_GUIDE
 - [License](#license)
 
 ---
+
 ## What’s inside
 
 ```
@@ -64,8 +66,8 @@ tsconfig.json             # TS compiler config
 docs/
 	architecture.md         # Mermaid of CI → PR → changelog flow
 scripts/
-	ai/changelog_check.mjs  # PR body validator + AI suggestions
-	ai/changelog_generate.mjs# create draft notes from commits
+	automation/changelog_check.mjs  # PR body validator (suggestion hook future)
+	automation/changelog_generate.mjs# create draft notes from commits (planned)
 	metrics/log_build.mjs   # optional telemetry demo
 src/
 	index.ts                # sample module
@@ -73,6 +75,7 @@ src/
 ```
 
 ---
+
 ## Scripts
 
 - `pnpm lint` — lint placeholder (swap in ESLint later)
@@ -81,25 +84,19 @@ src/
 - `pnpm build` — compile to `dist/`
 - `pnpm verify` — run lint + typecheck + test
 
----
-## AI features (optional)
+## Copilot features (optional)
 
-Add **Settings → Secrets and variables → Actions**:
+Enable GitHub Copilot (org or user level) — no repository secret required.
 
-- `OPENAI_API_KEY` (required for AI features)
-- `OPENAI_MODEL` (optional; default gpt-4o-mini)
+Copilot-assisted flows:
 
-AI‑assisted workflows:
+- **In-editor suggestions**: accelerate implementation & tests.
+- **PR summaries (beta/feature flagged)**: generate a summary of changes; adapt into the `## Changelog` block.
+- **Release note drafting**: when creating a GitHub Release, use "Generate release notes" then refine with Copilot Chat.
+- **Changelog bullets**: ask Copilot Chat: _"Summarise the diff for PR #123 into Keep a Changelog Added/Changed/Fixed bullets"_.
 
-- **PR Changelog Guard** (`.github/workflows/pr-changelog-guard.yml`)
-	- Fails PRs missing a `## Changelog` section.
-	- Prints a suggested entry based on `CHANGELOG_GUIDE.md` if AI is enabled.
-- **AI Changelog on Merge** (`.github/workflows/ai-changelog.yml`)
-	- On push to `main|master|release/**`, scans commits since last tag and opens a PR updating `CHANGELOG.md` with draft notes.
+Planned automation (optional): a future workflow can collect commits since last tag and open a draft PR; you then use Copilot to polish wording.
 
-Humans remain reviewers. AI suggests text; you approve or edit.
-
----
 ## CI/CD
 
 - CI runs on every PR and push to `main|master`.
@@ -115,7 +112,6 @@ Humans remain reviewers. AI suggests text; you approve or edit.
 
 See the Mermaid diagram in [docs/architecture.md](docs/architecture.md).
 
----
 ## Security
 
 - Code scanning via CodeQL
@@ -127,7 +123,6 @@ See the Mermaid diagram in [docs/architecture.md](docs/architecture.md).
 - Require PR review (≥1)
 - Required checks: CI, PR changelog guard
 
----
 ## Changelog & releases
 
 We follow [Keep a Changelog](https://keepachangelog.com/) + SemVer.
@@ -136,7 +131,6 @@ We follow [Keep a Changelog](https://keepachangelog.com/) + SemVer.
 - After merges to main, the AI workflow drafts notes and opens a PR to update `CHANGELOG.md`.
 - Tag releases manually at first (`v0.1.0`). Later, consider Changesets or semantic‑release for automated versioning.
 
----
 ## Contributing
 
 See [CONTRIBUTING.md](CONTRIBUTING.md). Highlights:
@@ -148,7 +142,6 @@ See [CONTRIBUTING.md](CONTRIBUTING.md). Highlights:
 
 Code of Conduct: [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md)
 
----
 ## Roadmap
 
 - **Phase 1:** Public template MVP (CI, security, PR guard, AI release notes)
@@ -158,14 +151,13 @@ Code of Conduct: [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md)
 
 Track enhancements in Issues → Milestones.
 
----
 ## FAQ
 
 **Do I have to use pnpm?**  
 Nope. Swap to npm/yarn, and update `ci.yml` accordingly.
 
-**What happens if I don’t set an OpenAI key?**  
-AI steps are skipped; CI still runs normally.
+**What if Copilot is disabled?**  
+All automation still works; you just lose AI drafting aids (write changelog/release notes manually).
 
 **Why Apache‑2.0?**  
 It’s permissive with an explicit patent grant — friendly for employers. Switch to MIT if you prefer.
@@ -173,7 +165,6 @@ It’s permissive with an explicit patent grant — friendly for employers. Swit
 **Can I use this for non‑Node projects?**  
 Yes. Replace the scripts and TypeScript config; keep the workflows and docs.
 
----
 ## License
 
 Copyright © 2025 Andrew Wilks.

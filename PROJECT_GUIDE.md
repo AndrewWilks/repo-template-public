@@ -55,9 +55,9 @@ repo-template-public/
 │  ├─ architecture.md             # Mermaid diagram of CI/PR/changelog flow
 │  └─ api/auto.md                 # optional AI‑generated docs
 ├─ scripts/
-│  ├─ ai/
-│  │  ├─ changelog_check.mjs      # PR body validator + AI suggestions
-│  │  └─ changelog_generate.mjs   # draft release notes from commits
+│  ├─ automation/
+│  │  ├─ changelog_check.mjs      # PR body validator + (future) suggestion hook
+│  │  └─ changelog_generate.mjs   # draft release notes from commits (planned)
 │  ├─ metrics/
 │  │  └─ log_build.mjs            # optional telemetry demo
 │  └─ release/
@@ -73,7 +73,7 @@ repo-template-public/
 
 - Node 20+ and pnpm 9+ (or switch to npm/yarn)
 - A GitHub repository (public). Default branch: main.
-- Optional: OPENAI_API_KEY as a repository secret to enable AI features.
+- Optional: Enable GitHub Copilot for your user/org (provides in‑editor suggestions, PR summaries, and release note drafting assistance inside GitHub).
 
 Install tools locally:
 
@@ -96,9 +96,9 @@ pnpm -v   # should print v9.x
    ```
 
 3. Add the files from this guide (or copy from the canvas kit). Commit and push.
-4. In GitHub → Settings → Actions → Secrets and variables → Actions:
+4. In GitHub → Repository Settings → GitHub Copilot:
 
-   - Add OPENAI_API_KEY (optional; enables AI‑assisted steps).
+   - Ensure Copilot is enabled for this repository (if your org requires per‑repo enablement).
 
 5. Enable security:
 
@@ -132,7 +132,7 @@ node dist/index.js
 ### Pull Requests
 
 - Always use the PR template and fill the ## Changelog block.
-- The PR guard fails PRs that omit the block; with OPENAI_API_KEY set, it prints suggested text.
+- The PR guard (if present) enforces the block. For suggested wording, use GitHub Copilot Chat or the PR "Generate summary" feature (where available) and adapt the output to Keep a Changelog categories.
 - Keep PRs small and focused; include screenshots when relevant.
 
 ---
@@ -149,14 +149,14 @@ node dist/index.js
 
 - Triggers on PR open/edit/sync.
 - Reads the PR body; fails if missing ## Changelog.
-- If OPENAI_API_KEY exists, calls the OpenAI API to generate a concise changelog suggestion, printed in the logs.
+- (Optional future enhancement) A lightweight script could add a PR comment reminding authors of format. Copilot can assist manually via the PR UI; no external API key required.
 
-### 6.3 ai-changelog.yml
+### 6.3 changelog-draft.yml (future optional)
 
-- Triggers on push to main|master|release/\*\* and via manual dispatch.
-- Gathers commits since last tag (if any).
-- With OPENAI_API_KEY, drafts a Keep‑a‑Changelog entry and opens a PR updating CHANGELOG.md.
-- Without a key, writes a placeholder entry.
+- (Planned) On push to main|master|release/\*\* and/or manual dispatch.
+- Gathers commits since last tag (if any) and assembles a draft Keep‑a‑Changelog section.
+- Maintainers can refine the draft using GitHub Copilot Chat (ask Copilot to summarise commit messages into categories) before committing.
+- No third‑party API keys required; relies on local summarisation via Copilot in the editor or PR UI rather than an Action calling external LLM APIs.
 
 ### 6.4 Security workflows
 
@@ -165,9 +165,7 @@ node dist/index.js
 
 Environment variables used in workflows
 
-- OPENAI_API_KEY (secret) - enables AI features
-- OPENAI_MODEL (secret/variable) - defaults to gpt-4o-mini
-- GITHUB_TOKEN - default token for creating PRs
+- GITHUB_TOKEN — default token for creating PRs (auto-provided). No extra AI secrets needed for Copilot.
 
 ---
 
@@ -176,8 +174,8 @@ Environment variables used in workflows
 We follow Keep a Changelog and SemVer. See CHANGELOG_GUIDE.md for category definitions and examples.
 
 - Every PR must include a ## Changelog section in the body.
-- The PR guard enforces presence and optionally suggests text.
-- On merge to main, the AI changelog workflow drafts entries and opens a PR for human review.
+- The PR guard (or reviewer) enforces presence; for help drafting concise entries, use Copilot Chat (e.g., "Summarise this diff into Keep a Changelog Added/Changed/Fixed bullets").
+- After merge, you can run (or later add) a draft changelog workflow; refine the result using Copilot before publishing.
 
 ### Examples
 
@@ -227,7 +225,7 @@ We follow Keep a Changelog and SemVer. See CHANGELOG_GUIDE.md for category defin
 
 - Start with manual tagging for v0.1.0 after the first public milestone.
 - Integrate Changesets or semantic‑release later for automatic semver bumps.
-- The AI changelog workflow focuses on notes, not version numbers; pair it with your chosen versioning tool.
+- (Optional) Use Copilot Chat to help refine release notes or categorize changes once a tag is prepared.
 
 Manual release checklist
 
@@ -245,10 +243,10 @@ Manual release checklist
 - SBOM generation (CycloneDX) and license scan
 - Preview deploy on develop; release on main
 
-### Phase 3 - AI enhancements
+### Phase 3 - Copilot enhancements
 
-- PR AI summariser that comments key changes and risk
-- AI issue triage that proposes labels/size/areas
+- Leverage GitHub Copilot PR summaries (when enabled) to auto-suggest changelog bullets.
+- Use Copilot Chat to propose labels / scope tags by prompting with issue body content.
 
 ### Phase 4 - DX polish
 
@@ -270,7 +268,7 @@ Manual release checklist
 
 ## 14. Troubleshooting
 
-- PR guard fails: Ensure the PR body contains a ## Changelog section. If AI suggestions don’t appear, check the OPENAI_API_KEY secret.
+- PR guard fails: Ensure the PR body contains a ## Changelog section. For suggested text, invoke Copilot Chat or use PR summary generation.
 - ai‑changelog doesn’t open a PR: Ensure the workflow has contents: write permissions and the default GITHUB_TOKEN is available. Also check that fetch-depth: 0 is set for actions/checkout.
 - CI step keeps passing even with problems: Some steps are initially non‑blocking (|| true). Remove those once linters/tests are configured.
 - CodeQL not scanning: Go to Security → Code scanning alerts → “Set up” and ensure the workflow is enabled on main.
