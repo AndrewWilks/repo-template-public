@@ -33,6 +33,7 @@ New here? Read the detailed design/build guide: [PROJECT_GUIDE.md](PROJECT_GUIDE
   - [Security](#security)
   - [Changelog \& releases](#changelog--releases)
   - [Contributing](#contributing)
+    - [Conventional Commits](#conventional-commits)
   - [Roadmap](#roadmap)
   - [FAQ](#faq)
   - [License](#license)
@@ -143,6 +144,43 @@ See [CONTRIBUTING.md](CONTRIBUTING.md). Highlights:
 - Fill the `## Changelog` block clearly
 
 Code of Conduct: [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md)
+
+### Conventional Commits
+
+This repository follows the Conventional Commits convention and enforces it with `commitlint` using the `@commitlint/config-conventional` ruleset (see `.commitlintrc.cjs`).
+
+Commit message format (one-line header):
+
+```text
+<type>[optional scope]: <description>
+```
+
+Where `type` is one of the following:
+
+- feat: A new feature
+- fix: A bug fix
+- docs: Documentation only changes
+- style: Formatting, missing semi-colons, etc (no code change)
+- refactor: Code change that neither fixes a bug nor adds a feature
+- perf: A code change that improves performance
+- test: Adding or updating tests
+- chore: Build process or auxiliary tools changes
+- ci: Continuous Integration config and scripts
+- revert: Reverts a previous commit
+
+Examples:
+
+- feat(api): add CSV import for CommSec statements
+- fix(auth): handle expired tokens in refresh flow
+- docs: update README with contributing guidelines
+- refactor(db): simplify query builder for clarity
+- chore(deps): bump devDependencies
+
+Scope (optional) should be a short noun describing the area affected (for example `api`, `auth`, `ci`).
+
+Keep the header short (≤72 chars). If you need a longer explanation, add a blank line and then body paragraphs after the header. For breaking changes include a footer with `BREAKING CHANGE: description`.
+
+For local setup, install commitlint dev dependencies and use a git hook (husky is a common choice) to run `npx --no-install commitlint --edit "$1"` on commit messages, or rely on CI to validate commit messages on PRs.
 
 ## Roadmap
 
