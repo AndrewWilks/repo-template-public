@@ -18,7 +18,7 @@ How I enforced Conventional Commits across this template repository while keepin
 
 Readable, structured commit history is leverage: cleaner diffs, quicker reviews, safer release notes, and automation hooks (changelogs, semantic versioning, dashboards) that _just work_. The trade-off most teams fear is friction. This case study shows how I set up **layered enforcement** that is: (1) friendly at author time, (2) firm at commit time, and (3) trust–but–verify in CI - without bikeshedding or slowing people down.
 
-Instead of aiming for theoretical purity, I optimised for _practical adoption_. For example, over‑long headers are a warning, not a failure; subject casing rules are relaxed (developers can keep their muscle memory); and the hook output is colourful, descriptive, and self‑serving (links + examples) so you rarely need to read external docs.
+Instead of aiming for theoretical purity, I optimised for _practical adoption_. For example, over-long headers are a warning, not a failure; subject casing rules are relaxed (developers can keep their muscle memory); and the hook output is colourful, descriptive, and self-serving (links + examples) so you rarely need to read external docs.
 
 ## The challenge
 
