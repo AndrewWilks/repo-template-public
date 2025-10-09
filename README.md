@@ -7,6 +7,7 @@
 ![Dependabot](https://img.shields.io/github/dependabot/updates/AndrewWilks/repo-template-public?logo=dependabot)
 ![License](https://img.shields.io/github/license/AndrewWilks/repo-template-public?logo=apache)
 ![Conventional Commits](https://img.shields.io/badge/commit-conventional-brightgreen.svg?logo=git)
+![Commitlint](https://github.com/AndrewWilks/repo-template-public/actions/workflows/commitlint.yml/badge.svg)
 
 A public GitHub template repository that bakes in DevOps hygiene and optional AI assistance. Use it to start any Node/TypeScript project with:
 
@@ -120,6 +121,8 @@ See the Mermaid diagram in [docs/architecture.md](docs/architecture.md).
 - Code scanning via CodeQL
 - Dependency updates via Dependabot
 - Vulnerability reports: see [SECURITY.md](SECURITY.md)
+
+Case study: A short write-up describing the commitlint design and trade-offs is available at `docs/case-study/commitlint-case-study.md`. You can keep it as documentation for maintainers or remove it from template projects if you prefer a leaner repo.
 
 **Branch protection (suggested):**
 
