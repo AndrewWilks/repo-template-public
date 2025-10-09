@@ -31,7 +31,7 @@ New here? Read the detailed design/build guide: [PROJECT_GUIDE.md](PROJECT_GUIDE
   - [Copilot features (optional)](#copilot-features-optional)
   - [CI/CD](#cicd)
   - [Security](#security)
-  - [Changelog & releases](#changelog--releases)
+  - [Changelog \& releases](#changelog--releases)
   - [Contributing](#contributing)
   - [Roadmap](#roadmap)
   - [FAQ](#faq)
@@ -41,16 +41,16 @@ New here? Read the detailed design/build guide: [PROJECT_GUIDE.md](PROJECT_GUIDE
 
 ## What’s inside
 
-```
+```text
 .github/
-	ISSUE_TEMPLATE/         # bug/feature forms
-	PULL_REQUEST_TEMPLATE.md
-	workflows/
-		ci.yml                # lint/type/test/build
-		pr-changelog-guard.yml# enforce PR changelog block + AI suggest
-		ai-changelog.yml      # draft release notes PR on merge
-		codeql.yml            # security scanning
-		dependabot.yml        # weekly updates
+  ISSUE_TEMPLATE/         # bug/feature forms
+  PULL_REQUEST_TEMPLATE.md
+  workflows/
+    ci.yml                # lint/type/test/build
+    pr-changelog-guard.yml# enforce PR changelog block + AI suggest
+    ai-changelog.yml      # draft release notes PR on merge
+    codeql.yml            # security scanning
+    dependabot.yml        # weekly updates
 .commitlintrc.cjs         # Conventional Commits
 .editorconfig             # consistent whitespace/newlines
 .gitattributes            # LF endings
@@ -66,14 +66,14 @@ CHANGELOG_GUIDE.md        # how to write entries
 package.json              # scripts + dev deps
 tsconfig.json             # TS compiler config
 docs/
-	architecture.md         # Mermaid of CI → PR → changelog flow
+  architecture.md         # Mermaid of CI → PR → changelog flow
 scripts/
-	automation/changelog_check.mjs  # PR body validator (suggestion hook future)
-	automation/changelog_generate.mjs# create draft notes from commits (planned)
-	metrics/log_build.mjs   # optional telemetry demo
+  automation/changelog_check.mjs    # PR body validator (suggestion hook future)
+  automation/changelog_generate.mjs # create draft notes from commits (planned)
+  metrics/log_build.mjs   # optional telemetry demo
 src/
-	index.ts                # sample module
-	index.test.ts           # placeholder test
+  index.ts                # sample module
+  index.test.ts           # placeholder test
 ```
 
 ---
