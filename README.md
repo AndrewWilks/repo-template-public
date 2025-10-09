@@ -8,6 +8,7 @@
 ![License](https://img.shields.io/github/license/AndrewWilks/repo-template-public?logo=apache)
 ![Conventional Commits](https://img.shields.io/badge/commit-conventional-brightgreen.svg?logo=git)
 ![Commitlint](https://github.com/AndrewWilks/repo-template-public/actions/workflows/commitlint.yml/badge.svg)
+![Commitizen](https://img.shields.io/badge/commitizen-enabled-blue.svg)
 
 A public GitHub template repository that bakes in DevOps hygiene and optional AI assistance. Use it to start any Node/TypeScript project with:
 
@@ -19,6 +20,8 @@ A public GitHub template repository that bakes in DevOps hygiene and optional AI
 - ⚖️ Employer‑friendly Apache‑2.0 license
 
 New here? Read the detailed design/build guide: [PROJECT_GUIDE.md](PROJECT_GUIDE.md)
+
+Case study and docs: see `docs/case-study/commitlint-case-study.md` for an in-depth write-up and examples (you can remove it from your fork if you prefer a smaller template).
 
 ---
 

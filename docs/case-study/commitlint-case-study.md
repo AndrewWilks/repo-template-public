@@ -17,10 +17,51 @@ This case study describes the design decisions and implementation steps taken to
 - Extends `@commitlint/config-conventional` and specifies rules such as allowed types, subject non-empty, and line length guidance.
 - We allow any case in scope and subject to avoid friction for developers who prefer sentence-case or Title Case.
 
+### Example `.commitlintrc.cjs`
+
+```javascript
+module.exports = {
+  extends: ["@commitlint/config-conventional"],
+  rules: {
+    "type-enum": [
+      2,
+      "always",
+      [
+        "feat",
+        "fix",
+        "docs",
+        "style",
+        "refactor",
+        "perf",
+        "test",
+        "chore",
+        "ci",
+        "build",
+        "revert",
+      ],
+    ],
+    "subject-empty": [2, "never"],
+    "subject-max-length": [2, "always", 100],
+    "header-max-length": [1, "always", 100],
+  },
+};
+```
+
 1. Local hooks and UX
 
 - Husky installed and configured via `prepare` script (`pnpm install` runs `husky install`).
 - A `commit-msg` hook lives at `.husky/commit-msg`. It runs `npx --no-install commitlint --edit "$1"` and prints a friendly, formatted message with examples and links when validation fails.
+
+### Example `.husky/commit-msg`
+
+```bash
+#!/usr/bin/env sh
+npx --no-install commitlint --edit "$1" || {
+  echo "✖ Invalid commit message — see .commitlintrc.cjs"
+  exit 1
+}
+```
+
 - Two VS Code extensions are recommended in `.vscode/extensions.json`:
   - `niieani.vscode-commitlint` for live validation while typing commit messages.
   - `vivaxy.vscode-conventional-commit` for templates and quick authoring.
@@ -28,6 +69,17 @@ This case study describes the design decisions and implementation steps taken to
 1. Developer tools
 
 - Commitizen (cz-conventional-changelog) added to make compliant commits easier via `pnpm cz`.
+
+### Commitizen usage
+
+Run the guided commit flow with:
+
+```pwsh
+pnpm cz
+```
+
+This opens an interactive prompt to assemble a Conventional Commit message.
+
 - Helpful scripts in `package.json`:
   - `pnpm commitlint` — validate commits on your branch against `origin/main`.
   - `pnpm commitlint:msg` — validate a message file (useful in tests and local checks).
@@ -63,3 +115,17 @@ This case study describes the design decisions and implementation steps taken to
 ## Acknowledgements
 
 This case study is part of `repo-template-public` by Andrew Wilks and is intended to make commit discipline easy and reliable for public projects.
+
+Repository link: [repo-template-public](https://github.com/AndrewWilks/repo-template-public)
+
+Screenshots (placeholders):
+
+- `.husky/commit-msg` hook output in terminal:
+
+  ![hook-output-placeholder](/docs/case-study/images/hook-output.png)
+
+- VS Code Conventional Commit extension prompting the message:
+
+  ![vscode-commit-placeholder](/docs/case-study/images/vscode-commit.png)
+
+Replace the placeholders with real screenshots if you want to include images in the repo.
