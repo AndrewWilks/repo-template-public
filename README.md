@@ -130,7 +130,7 @@ See the Mermaid diagram in [docs/architecture.md](docs/architecture.md).
 We follow [Keep a Changelog](https://keepachangelog.com/) + SemVer.
 
 - Write PRs with a `## Changelog` section (example entries in [CHANGELOG_GUIDE.md](CHANGELOG_GUIDE.md)).
-- After merges to main, the AI workflow drafts notes and opens a PR to update `CHANGELOG.md`.
+- After merges to main, the Copilot-assisted workflow drafts notes and opens a PR to update `CHANGELOG.md`.
 - Tag releases manually at first (`v0.1.0`). Later, consider Changesets or semantic‑release for automated versioning.
 
 ## Contributing
