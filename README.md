@@ -31,7 +31,7 @@ New here? Read the detailed design/build guide: [PROJECT_GUIDE.md](PROJECT_GUIDE
   - [Copilot features (optional)](#copilot-features-optional)
   - [CI/CD](#cicd)
   - [Security](#security)
-  - [Changelog \& releases](#changelog--releases)
+  - [Changelog & releases](#changelog--releases)
   - [Contributing](#contributing)
   - [Roadmap](#roadmap)
   - [FAQ](#faq)
