@@ -114,7 +114,7 @@ pnpm -v   # should print v9.x
 ### Branching
 
 - Default branch: main
-- Feature branches: type/short-desc (e.g., feat/ai-changelog) using Conventional Commits in commit messages.
+- Feature branches: type/short-desc (e.g., feat/automation-changelog) using Conventional Commits in commit messages.
 
 ### Commit messages (Conventional Commits)
 
