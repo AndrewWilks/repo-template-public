@@ -23,17 +23,19 @@ New here? Read the detailed design/build guide: [PROJECT_GUIDE.md](PROJECT_GUIDE
 
 ## Table of Contents
 
-- [What’s inside](#whats-inside)
-- [Quickstart](#quickstart)
-- [Scripts](#scripts)
-- [Copilot features (optional)](#copilot-features-optional)
-- [CI/CD](#cicd)
-- [Security](#security)
-- [Changelog & releases](#changelog--releases)
-- [Contributing](#contributing)
-- [Roadmap](#roadmap)
-- [FAQ](#faq)
-- [License](#license)
+- [Dev Standards](#dev-standards)
+  - [Public Repo Template](#public-repo-template)
+  - [Table of Contents](#table-of-contents)
+  - [What’s inside](#whats-inside)
+  - [Scripts](#scripts)
+  - [Copilot features (optional)](#copilot-features-optional)
+  - [CI/CD](#cicd)
+  - [Security](#security)
+  - [Changelog \& releases](#changelog--releases)
+  - [Contributing](#contributing)
+  - [Roadmap](#roadmap)
+  - [FAQ](#faq)
+  - [License](#license)
 
 ---
 
