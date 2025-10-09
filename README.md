@@ -233,4 +233,4 @@ Yes. Replace the scripts and TypeScript config; keep the workflows and docs.
 
 Copyright © 2025 Andrew Wilks.
 
-Licensed under the Apache License 2.0. See [LICENSE](LICENSE) for details.
+Licensed under the Apache License 2.0. See [LICENSE](LICENSE) for full terms and [NOTICE](NOTICE) for attribution updates.
