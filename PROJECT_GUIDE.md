@@ -262,7 +262,7 @@ Manual release checklist
 2. Write small, focused commits with Conventional Commits.
 3. Open a PR using the template; fill ## Changelog clearly.
 4. Wait for green CI + PR guard; request review.
-5. After merge, review the AI changelog PR and finalize notes.
+5. After merge, review and finalize the changelog notes (use Copilot PR summary or chat as needed).
 
 ---
 
