@@ -73,7 +73,7 @@ repo-template-public/
 
 - Node 20+ and pnpm 9+ (or switch to npm/yarn)
 - A GitHub repository (public). Default branch: main.
-- Optional: Enable GitHub Copilot for your user/org (provides in‑editor suggestions, PR summaries, and release note drafting assistance inside GitHub).
+- Optional: Enable GitHub Copilot for your user/org (provides in-editor suggestions, PR summaries, and release note drafting assistance inside GitHub).
 
 Install tools locally:
 
