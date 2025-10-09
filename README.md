@@ -30,6 +30,7 @@ Case study and docs: see `docs/case-study/commitlint-case-study.md` for an in-de
 - [Dev Standards](#dev-standards)
   - [Public Repo Template](#public-repo-template)
   - [Table of Contents](#table-of-contents)
+  - [Quickstart](#quickstart)
   - [What’s inside](#whats-inside)
   - [Scripts](#scripts)
   - [Copilot features (optional)](#copilot-features-optional)
@@ -82,6 +83,21 @@ src/
 ```
 
 ---
+
+## Quickstart
+
+Clone (or use this as a template) then:
+
+```pwsh
+pnpm install     # install deps + setup husky hooks
+pnpm verify      # run lint + typecheck + test + build
+pnpm build       # compile TypeScript
+node dist/index.js
+```
+
+Open `src/index.ts`, make a change, re-run `pnpm build` and execute again. For commit message help run `pnpm commitlint` after a few local commits.
+
+See contribution details in [CONTRIBUTING.md](CONTRIBUTING.md). For conduct expectations read [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md). Security reporting process: [SECURITY.md](SECURITY.md).
 
 ## Scripts
 
