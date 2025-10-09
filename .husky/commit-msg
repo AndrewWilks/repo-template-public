@@ -1,0 +1,41 @@
+#!/usr/bin/env sh
+# NOTE: Husky v10 changes hook wiring. To be compatible with future Husky
+# releases remove the two lines that sourced husky.sh (they are not required
+# in the v10 hook format). This script intentionally avoids relying on
+# husky.sh and calls commitlint directly so it's forward-compatible.
+
+# Run commitlint on the commit message and print a friendly, colored error if it fails
+npx --no-install commitlint --edit "$1" || {
+		# ANSI color codes (widely supported in modern terminals). Build the
+		# actual escape character using printf so we don't emit literal backslashes.
+			ESC=$(printf '\033')
+		RED="${ESC}[31m"
+		YELLOW="${ESC}[33m"
+		CYAN="${ESC}[36m"
+		BOLD="${ESC}[1m"
+		RESET="${ESC}[0m"
+
+	printf "\n"
+	printf "%s%s✖ Invalid commit message — commitlint failed.%s\n" "$RED" "$BOLD" "$RESET"
+	printf "%sFollow Conventional Commits:%s\n\n" "$BOLD" "$RESET"
+
+	printf "%s    %s<type>[optional scope]: <short description>%s\n\n" "$CYAN" "$BOLD" "$RESET"
+
+	printf "%sExamples:%s\n" "$YELLOW" "$RESET"
+	printf "  %sfeat(api):%s add CSV import for CommSec statements\n" "$BOLD" "$RESET"
+	printf "  %sfix(auth):%s handle expired tokens in refresh flow\n\n" "$BOLD" "$RESET"
+
+	printf "%sHelpful links:%s\n" "$YELLOW" "$RESET"
+	printf "  • %sConventional Commits:%s https://www.conventionalcommits.org/\n" "$CYAN" "$RESET"
+	printf "  • %sRepo README:%s %s/README.md\n" "$CYAN" "$RESET" "$(pwd)"
+	printf "  • %scommitlint config:%s .commitlintrc.cjs\n\n" "$CYAN" "$RESET"
+
+	printf "%sTip:%s use the '%svivaxy.vscode-conventional-commit%s' extension for templates\n" "$YELLOW" "$RESET" "$BOLD" "$RESET"
+	printf "     or '%sniieani.vscode-commitlint%s' for live validation while you type in VS Code.\n\n" "$BOLD" "$RESET"
+
+	# Also print the raw commitlint diagnostics so users can see exact failures
+	printf "%sCommitlint output:%s\n" "$YELLOW" "$RESET"
+	npx --no-install commitlint --edit "$1"
+
+	exit 1
+}

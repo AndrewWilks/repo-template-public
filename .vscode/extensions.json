@@ -1,0 +1,6 @@
+{
+  "recommendations": [
+    "niieani.vscode-commitlint",
+    "vivaxy.vscode-conventional-commit"
+  ]
+}
