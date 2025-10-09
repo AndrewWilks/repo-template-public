@@ -141,7 +141,7 @@ node dist/index.js
 
 ### 6.1 ci.yml
 
-- Triggers on PR and push to main|master.
+- Trigger on PR and push to main|master.
 - Steps: Checkout → pnpm setup → install → lint → typecheck → test → build.
 - Some steps are non‑blocking (|| true) until you add real lint/tests; convert them to blocking as the project matures.
 
