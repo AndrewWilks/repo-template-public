@@ -151,7 +151,7 @@ Case study: A short write-up describing the commitlint design and trade-offs is 
 
 ## Changelog & releases
 
-We follow [Keep a Changelog](https://keepachangelog.com/) + SemVer.
+We follow [Keep a Changelog](https://keepachangelog.com/) + SemVer. See [CHANGELOG.md](CHANGELOG.md) for history and [CHANGELOG_GUIDE.md](CHANGELOG_GUIDE.md) for how to write entries.
 
 - Write PRs with a `## Changelog` section (example entries in [CHANGELOG_GUIDE.md](CHANGELOG_GUIDE.md)).
 - After merges to main, the Copilot-assisted workflow drafts notes and opens a PR to update `CHANGELOG.md`.
