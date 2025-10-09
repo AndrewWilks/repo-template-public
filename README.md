@@ -4,7 +4,6 @@
 
 ![CI](https://github.com/AndrewWilks/repo-template-public/actions/workflows/ci.yml/badge.svg)
 [![CodeQL](https://github.com/AndrewWilks/repo-template-public/actions/workflows/codeql.yml/badge.svg)](https://github.com/AndrewWilks/repo-template-public/security/code-scanning)
-[![Dependabot](https://img.shields.io/github/dependabot/updates/AndrewWilks/repo-template-public?logo=dependabot)](https://github.com/AndrewWilks/repo-template-public/security/dependabot)
 ![Security](https://img.shields.io/badge/security-CodeQL%20%2B%20Dependabot-blue?logo=github)
 ![License](https://img.shields.io/github/license/AndrewWilks/repo-template-public?logo=apache)
 ![Conventional Commits](https://img.shields.io/badge/commit-conventional-brightgreen.svg?logo=git)
