@@ -15,6 +15,9 @@ jobs:
     if: >-
       startsWith(github.event.comment.body, '/recheck-changelog') && github.event.issue.pull_request != null
     steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
       - name: Trigger PR guard workflow by re-dispatching (via workflow_dispatch)
         uses: actions/github-script@v6
         with:
