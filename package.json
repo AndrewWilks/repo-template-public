@@ -13,7 +13,7 @@
     "commitlint:msg": "commitlint --edit \"$1\"",
     "spell": "cspell \"docs/**\" \"src/**\" \"*.md\"",
     "cz": "cz",
-  "test": "vitest run",
+    "test": "vitest run",
     "verify": "pnpm lint && pnpm typecheck && pnpm build && pnpm test"
   },
   "keywords": [
@@ -42,13 +42,11 @@
     "commitizen": {
       "path": "cz-conventional-changelog"
     }
-  }
-  ,
+  },
   "vitest": {
     "include": [
       "src/**/*.test.*",
       "test/**/*.test.*"
     ]
   }
-
 }
