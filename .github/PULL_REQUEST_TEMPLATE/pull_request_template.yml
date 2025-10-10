@@ -3,6 +3,9 @@ description: Provide a clear summary, required changelog, and confirmations
 title: "<type>(<scope>): <short summary>"
 labels:
   - documentation
+  - changelog
+assignees:
+  - AndrewWilks
 body:
   - type: markdown
     attributes:
@@ -43,7 +46,7 @@ body:
         - 
 
         ### Security
-        - 
+        -
     validations:
       required: true
 
@@ -55,6 +58,8 @@ body:
         - label: I used a Conventional Commit title
           required: true
         - label: I updated the Changelog block above
+          required: true
+        - label: CI is green for this PR
           required: true
         - label: Tests added/updated (if applicable)
           required: false
