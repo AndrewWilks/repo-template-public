@@ -141,4 +141,4 @@ jobs:
               // ignore
             }
         env:
-          CHANGELOG_GUIDE_URL: https://github.com/AndrewWilks/repo-template-public/blob/main/CHANGELOG_GUIDE.md
+          CHANGELOG_GUIDE_URL: https://github.com/${{ github.repository }}/blob/main/CHANGELOG_GUIDE.md
