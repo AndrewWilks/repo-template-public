@@ -1,0 +1,139 @@
+const pr = await github.rest.pulls.get({
+  owner: context.repo.owner,
+  repo: context.repo.repo,
+  pull_number: context.payload.pull_request.number,
+});
+const body = pr.data.body || "";
+
+// Accepts headings like '## Changelog', '### Changelog:' etc.
+const changelogHeadingRegex = /(^|\n)#{2,3}\s*Changelog\b[:\-–\s]*/i;
+const hasHeading = changelogHeadingRegex.test(body);
+
+// Check for at least one non-empty bullet under any Keep a Changelog category
+const categoryRegex =
+  /###\s*(Added|Changed|Deprecated|Removed|Fixed|Security)\b[\s\S]*?(?=\n#{1,3}\s|$)/gi;
+let hasBullet = false;
+let match;
+while ((match = categoryRegex.exec(body)) !== null) {
+  const block = match[0];
+  if (/^\s*[-*+]\s+\S+/m.test(block)) {
+    hasBullet = true;
+    break;
+  }
+}
+
+const needsChangelog = !(hasHeading && hasBullet);
+
+// Bypass rules: skip guard for certain labels or authors
+const bypassLabels = (
+  process.env.BYPASS_LABELS || "chore,dependabot,no-changelog-needed"
+)
+  .split(",")
+  .map((l) => l.trim())
+  .filter(Boolean);
+const authorAllowlist = (process.env.AUTHOR_ALLOWLIST || "")
+  .split(",")
+  .map((a) => a.trim().toLowerCase())
+  .filter(Boolean);
+try {
+  const currentLabels = (
+    await github.rest.issues.listLabelsOnIssue({
+      owner: context.repo.owner,
+      repo: context.repo.repo,
+      issue_number: context.payload.pull_request.number,
+    })
+  ).data.map((l) => l.name.toLowerCase());
+
+  const hasBypassLabel = currentLabels.some((l) => bypassLabels.includes(l));
+  const prAuthor =
+    (pr.data.user && pr.data.user.login && pr.data.user.login.toLowerCase()) ||
+    "";
+  const authorAllowed = authorAllowlist.includes(prAuthor);
+
+  if (hasBypassLabel || authorAllowed) {
+    core.info(
+      "Bypassing changelog guard due to bypass label or author allowlist."
+    );
+    // Remove needs-changelog label if present when bypassing
+    try {
+      if (currentLabels.includes("needs-changelog")) {
+        await github.rest.issues.removeLabel({
+          owner: context.repo.owner,
+          repo: context.repo.repo,
+          issue_number: context.payload.pull_request.number,
+          name: "needs-changelog",
+        });
+      }
+    } catch (err) {
+      // ignore
+    }
+    return;
+  }
+} catch (err) {
+  core.warning("Failed to evaluate bypass rules; proceeding with guard.");
+}
+const guideUrl = process.env.CHANGELOG_GUIDE_URL || "CHANGELOG_GUIDE.md";
+
+if (needsChangelog) {
+  const scaffold = `### Added\n- Your change description here\n\n### Changed\n- Your change description here\n\n### Fixed\n- Your change description here\n\n### Security\n- Your change description here`;
+  const comment = `Thanks — I couldn't find a completed **## Changelog** section in this PR. Please add one before merge.\n\n**Quick scaffold (copy into your PR body):**\n\n\n\n${scaffold}\n\nRead the guide: ${guideUrl}\n\nAfter updating, edit the PR body to re-run checks or comment with "/recheck-changelog".`;
+  await github.rest.issues.createComment({
+    owner: context.repo.owner,
+    repo: context.repo.repo,
+    issue_number: context.payload.pull_request.number,
+    body: comment,
+  });
+
+  try {
+    await github.rest.issues.addLabels({
+      owner: context.repo.owner,
+      repo: context.repo.repo,
+      issue_number: context.payload.pull_request.number,
+      labels: ["needs-changelog"],
+    });
+  } catch (err) {
+    // ignore label add failure
+  }
+
+  throw new Error(
+    "PR is missing a required ## Changelog section. See CHANGELOG_GUIDE.md for instructions."
+  );
+}
+
+// Remove needs-changelog label if present
+try {
+  const labels = await github.rest.issues.listLabelsOnIssue({
+    owner: context.repo.owner,
+    repo: context.repo.repo,
+    issue_number: context.payload.pull_request.number,
+  });
+  const hasLabel = labels.data.some((l) => l.name === "needs-changelog");
+  if (hasLabel) {
+    await github.rest.issues.removeLabel({
+      owner: context.repo.owner,
+      repo: context.repo.repo,
+      issue_number: context.payload.pull_request.number,
+      name: "needs-changelog",
+    });
+  }
+} catch (err) {
+  // ignore
+}
+
+// Category-aware labeling
+try {
+  const toAdd = [];
+  if (/###\s*Security\b/i.test(body)) toAdd.push("security");
+  if (/###\s*Added\b/i.test(body)) toAdd.push("feature");
+  if (/###\s*Fixed\b/i.test(body)) toAdd.push("fix");
+  if (toAdd.length) {
+    await github.rest.issues.addLabels({
+      owner: context.repo.owner,
+      repo: context.repo.repo,
+      issue_number: context.payload.pull_request.number,
+      labels: toAdd,
+    });
+  }
+} catch (err) {
+  // ignore
+}

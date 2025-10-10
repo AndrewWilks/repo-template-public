@@ -1,11 +1,11 @@
-name: Pull request
+name: Pull Request
 description: Provide a clear summary, required changelog, and confirmations
 title: "<type>(<scope>): <short summary>"
 labels:
   - documentation
   - changelog
 assignees:
-  - AndrewWilks
+  - ${{ github.actor }}
 body:
   - type: markdown
     attributes:

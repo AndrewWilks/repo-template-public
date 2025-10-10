@@ -8,7 +8,7 @@ The changelog is for humans first: it should communicate what changed, why it ma
 
 ## Categories
 
-Use only the standard headings (exact capitalization) in this order:
+Use only the standard headings (exact capitalisation) in this order:
 
 ```text
 ### Added      # new features
@@ -91,4 +91,4 @@ If a section has no entries for a release, omit it in that release block (keep i
 
 ---
 
-See current history in [`CHANGELOG.md`](CHANGELOG.md).
+See current history in [`docs/repo/CHANGELOG.md`](docs/repo/CHANGELOG.md).

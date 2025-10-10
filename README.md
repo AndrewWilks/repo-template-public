@@ -50,38 +50,7 @@ Case study and docs: see `docs/case-study/commitlint-case-study.md` for an in-de
 ## What’s inside
 
 ```text
-.github/
-  ISSUE_TEMPLATE/         # bug/feature forms
-  PULL_REQUEST_TEMPLATE.md
-  workflows/
-    ci.yml                # lint/type/test/build
-    pr-changelog-guard.yml# enforce PR changelog block + AI suggest
-    ai-changelog.yml      # draft release notes PR on merge
-    codeql.yml            # security scanning
-    dependabot.yml        # weekly updates
-.commitlintrc.cjs         # Conventional Commits
-.editorconfig             # consistent whitespace/newlines
-.gitattributes            # LF endings
-.gitignore
-LICENSE                   # Apache-2.0
-README.md                 # you are here
-PROJECT_GUIDE.md          # full design/build guide
-CONTRIBUTING.md           # PR process & local dev
-CODE_OF_CONDUCT.md        # Contributor Covenant
-SECURITY.md               # how to report issues
-CHANGELOG.md              # Keep a Changelog format
-CHANGELOG_GUIDE.md        # how to write entries
-package.json              # scripts + dev deps
-tsconfig.json             # TS compiler config
-docs/
-  architecture.md         # Mermaid of CI → PR → changelog flow
-scripts/
-  automation/changelog_check.mjs    # PR body validator (suggestion hook future)
-  automation/changelog_generate.mjs # create draft notes from commits (planned)
-  metrics/log_build.mjs   # optional telemetry demo
-src/
-  index.ts                # sample module
-  index.test.ts           # placeholder test
+ TODO: add tree output
 ```
 
 ---
@@ -99,7 +68,7 @@ node dist/index.js
 
 Open `src/index.ts`, make a change, re-run `pnpm build` and execute again. For commit message help run `pnpm commitlint` after a few local commits.
 
-See contribution details in [CONTRIBUTING.md](CONTRIBUTING.md). For conduct expectations read [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md). Security reporting process: [SECURITY.md](SECURITY.md).
+See contribution details in [docs/repo/CONTRIBUTING.md](docs/repo/CONTRIBUTING.md). For conduct expectations read [docs/repo/CODE_OF_CONDUCT.md](docs/repo/CODE_OF_CONDUCT.md). Security reporting process: [docs/repo/SECURITY.md](docs/repo/SECURITY.md).
 
 ## Scripts
 
@@ -141,7 +110,7 @@ See the Mermaid diagram in [docs/architecture.md](docs/architecture.md).
 
 - Code scanning via CodeQL
 - Dependency updates via Dependabot
-- Vulnerability reports: see [SECURITY.md](SECURITY.md)
+- Vulnerability reports: see [docs/repo/SECURITY.md](docs/repo/SECURITY.md)
 
 Case study: A short write-up describing the commitlint design and trade-offs is available at `docs/case-study/commitlint-case-study.md`. You can keep it as documentation for maintainers or remove it from template projects if you prefer a leaner repo.
 
@@ -152,15 +121,15 @@ Case study: A short write-up describing the commitlint design and trade-offs is 
 
 ## Changelog & releases
 
-We follow [Keep a Changelog](https://keepachangelog.com/) + SemVer. See [CHANGELOG.md](CHANGELOG.md) for history and [CHANGELOG_GUIDE.md](CHANGELOG_GUIDE.md) for how to write entries.
+We follow [Keep a Changelog](https://keepachangelog.com/) + SemVer. See [docs/repo/CHANGELOG.md](docs/repo/CHANGELOG.md) for history and [CHANGELOG_GUIDE.md](./docs/CHANGELOG_GUIDE.md) for how to write entries.
 
-- Write PRs with a `## Changelog` section (example entries in [CHANGELOG_GUIDE.md](CHANGELOG_GUIDE.md)).
-- After merges to main, the Copilot-assisted workflow drafts notes and opens a PR to update `CHANGELOG.md`.
+- Write PRs with a `## Changelog` section (example entries in [CHANGELOG_GUIDE.md](./docs/CHANGELOG_GUIDE.md)).
+- After merges to main, the Copilot-assisted workflow drafts notes and opens a PR to update `docs/repo/CHANGELOG.md`.
 - Tag releases manually at first (`v0.1.0`). Later, consider Changesets or semantic‑release for automated versioning.
 
 ### PR changelog guard
 
-This template includes a PR changelog guard that helps ensure every merged change has a human-readable entry in `CHANGELOG.md`.
+This template includes a PR changelog guard that helps ensure every merged change has a human-readable entry in `docs/repo/CHANGELOG.md`.
 
 - When a PR is opened or edited, the guard checks the PR body for a `## Changelog` block. If missing or empty, the guard:
 
@@ -178,14 +147,14 @@ Note: enable GitHub Copilot for Pull Requests in the repository settings (Settin
 
 ## Contributing
 
-See [CONTRIBUTING.md](CONTRIBUTING.md). Highlights:
+See [docs/repo/CONTRIBUTING.md](docs/repo/CONTRIBUTING.md). Highlights:
 
 - Conventional Commits (`feat:`, `fix:`, `docs:`, `refactor:`, `test:`, `chore:`, `ci:`)
 - Small, focused PRs using the provided template
 - Add/Update tests and docs alongside code
 - Fill the `## Changelog` block clearly
 
-Code of Conduct: [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md)
+Code of Conduct: [docs/repo/CODE_OF_CONDUCT.md](docs/repo/CODE_OF_CONDUCT.md)
 
 ### Conventional Commits
 
@@ -261,4 +230,4 @@ Please retain the `LICENSE` file and update `NOTICE` if you add third‑party co
 
 Copyright © 2025 Andrew Wilks.
 
-Licensed under the Apache License 2.0. See [LICENSE](LICENSE) for full terms and [NOTICE](NOTICE) for attribution updates.
+Licensed under the Apache License 2.0. See [LICENSE](LICENSE) for full terms and [NOTICE](/docs/repo/NOTICE) for attribution updates.
