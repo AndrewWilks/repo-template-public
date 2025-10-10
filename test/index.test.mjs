@@ -1,11 +1,11 @@
 import { strict as assert } from "node:assert";
-import { pathToFileURL } from 'node:url';
 import path from 'node:path';
+import { createRequire } from 'node:module';
 
-const __dirname = path.dirname(new URL(import.meta.url).pathname);
+const __dirname = path.dirname(new URL(import.meta.url).pathname.replace(/^\//, ''));
 const distPath = path.resolve(__dirname, '..', 'dist', 'index.js');
-const distUrl = pathToFileURL(distPath).href;
-const { hello } = await import(distUrl);
+const require = createRequire(import.meta.url);
+const { hello } = require(distPath);
 
 assert.equal(hello("Andrew"), "hello Andrew");
 
