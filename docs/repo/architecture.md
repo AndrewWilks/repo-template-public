@@ -5,12 +5,26 @@ This document describes the automated flow for Pull Requests, changelog enforcem
 ## Diagram
 
 ```mermaid
-TODO: Add the mermaid diagram from the original file here
+flowchart LR
+  A[PR opened/edited] --> B[PR changelog guard workflow]
+  B -->|missing| C[Post scaffold comment + add needs-changelog label]
+  B -->|present| D[Add category labels and pass check]
+  C --> E[Author updates PR body]
+  E --> B
+  subgraph CI
+    B --> F[CI: lint → typecheck → test → build]
+  end
 ```
 
 ## Components referenced
 
-TODO: Add the components list from the original file here
+Components referenced
+
+- PR changelog guard workflow: `.github/workflows/pr-changelog-guard.yml`
+- Recheck workflow: `.github/workflows/pr-changelog-recheck.yml`
+- Guard helper scripts: `.github/js_repo_tools/pr-changelog-guard.mjs`
+- Recheck helper scripts: `.github/js_repo_tools/pr-changelog-recheck.mjs`
+- Changelog guide: `docs/repo/CHANGELOG_GUIDE.md`
 
 ## Notes and operational details
 
