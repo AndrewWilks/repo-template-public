@@ -5,7 +5,7 @@ labels:
   - documentation
   - changelog
 assignees:
-  - "@${{ github.actor }}"
+  - ${{ github.actor }}
 body:
   - type: markdown
     attributes:
