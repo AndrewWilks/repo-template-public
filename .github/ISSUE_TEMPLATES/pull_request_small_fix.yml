@@ -5,7 +5,7 @@ labels:
   - "type:fix"
   - "size/XS"
 assignees:
-  - "@${{ github.actor }}"
+  - ${{ github.actor }}
 body:
   - type: markdown
     attributes:
