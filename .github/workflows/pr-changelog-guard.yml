@@ -1,0 +1,77 @@
+name: PR Changelog Guard
+
+on:
+  pull_request:
+    types: [opened, edited, synchronize]
+
+permissions:
+  contents: read
+  pull-requests: write
+  issues: write
+
+jobs:
+  guard:
+    name: Check PR body for Changelog
+    runs-on: ubuntu-latest
+    steps:
+      - name: Fetch PR body
+        uses: actions/github-script@v6
+        id: body
+        with:
+          script: |
+            const pr = await github.rest.pulls.get({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              pull_number: context.payload.pull_request.number,
+            });
+            return pr.data.body || ''
+
+      - name: Validate Changelog presence
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const body = "${{ steps.body.outputs.result }}";
+            const hasChangelog = /##\s+Changelog/i.test(body) || /##\s+Changelog\s*\(/i.test(body);
+            if (!hasChangelog) {
+              const comment = `Thanks! I couldn't find a **## Changelog** section in this PR. Please add a Changelog block following the guidance: ${process.env.CHANGELOG_GUIDE_URL}`;
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: context.payload.pull_request.number,
+                body: comment,
+              });
+              // add label
+              try {
+                await github.rest.issues.addLabels({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  issue_number: context.payload.pull_request.number,
+                  labels: ['needs-changelog'],
+                });
+              } catch (err) {
+                // ignore label add failure
+              }
+              core.setFailed('PR is missing a required ## Changelog section. See CHANGELOG_GUIDE.md for instructions.');
+            } else {
+              // remove label if present
+              try {
+                const labels = await github.rest.issues.listLabelsOnIssue({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  issue_number: context.payload.pull_request.number,
+                });
+                const hasLabel = labels.data.some(l => l.name === 'needs-changelog');
+                if (hasLabel) {
+                  await github.rest.issues.removeLabel({
+                    owner: context.repo.owner,
+                    repo: context.repo.repo,
+                    issue_number: context.payload.pull_request.number,
+                    name: 'needs-changelog',
+                  });
+                }
+              } catch (err) {
+                // ignore
+              }
+            }
+        env:
+          CHANGELOG_GUIDE_URL: https://github.com/AndrewWilks/repo-template-public/blob/main/CHANGELOG_GUIDE.md
