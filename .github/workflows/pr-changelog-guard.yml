@@ -43,6 +43,40 @@ jobs:
 
             const needsChangelog = !(hasHeading && hasBullet);
 
+              // Bypass rules: skip guard for certain labels or authors
+              const bypassLabels = (process.env.BYPASS_LABELS || 'chore,dependabot,no-changelog-needed').split(',').map(l => l.trim()).filter(Boolean);
+              const authorAllowlist = (process.env.AUTHOR_ALLOWLIST || '').split(',').map(a => a.trim().toLowerCase()).filter(Boolean);
+              try {
+                const currentLabels = (await github.rest.issues.listLabelsOnIssue({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  issue_number: context.payload.pull_request.number,
+                })).data.map(l => l.name.toLowerCase());
+
+                const hasBypassLabel = currentLabels.some(l => bypassLabels.includes(l));
+                const prAuthor = (pr.data.user && pr.data.user.login && pr.data.user.login.toLowerCase()) || '';
+                const authorAllowed = authorAllowlist.includes(prAuthor);
+
+                if (hasBypassLabel || authorAllowed) {
+                  core.info('Bypassing changelog guard due to bypass label or author allowlist.');
+                  // Remove needs-changelog label if present when bypassing
+                  try {
+                    if (currentLabels.includes('needs-changelog')) {
+                      await github.rest.issues.removeLabel({
+                        owner: context.repo.owner,
+                        repo: context.repo.repo,
+                        issue_number: context.payload.pull_request.number,
+                        name: 'needs-changelog',
+                      });
+                    }
+                  } catch (err) {
+                    // ignore
+                  }
+                  return;
+                }
+              } catch (err) {
+                core.warning('Failed to evaluate bypass rules; proceeding with guard.');
+              }
             const guideUrl = process.env.CHANGELOG_GUIDE_URL || 'CHANGELOG_GUIDE.md';
 
             if (needsChangelog) {
