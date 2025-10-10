@@ -38,3 +38,19 @@ coverage/
 .pnpm/
 .modules.yaml
 .vite/
+
+# Ignore top-level generated JS and maps produced by TypeScript builds
+/index.js
+/index.js.map
+/index.test.js
+/index.test.js.map
+/message.js
+/message.js.map
+/message.test.js
+/message.test.js.map
+
+# Ignore top-level generated declaration files
+/index.d.ts
+/index.test.d.ts
+/message.d.ts
+/message.test.d.ts
