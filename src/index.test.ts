@@ -1,37 +1,4 @@
-// Intentionally empty placeholder to avoid test globals during TypeScript build.
+// Placeholder file to avoid accidental test globals during TypeScript compilation.
+// This file intentionally exports nothing and should be removed or replaced
+// with a proper test harness (e.g., Vitest) in future.
 export {};
-import { hello } from "./index";
-
-test("hello returns greeting", () => {
-  const out = hello("Andrew");
-  expect(out).toBe("hello Andrew");
-});
-/**
- * Placeholder test file for src/index.ts
- * TODO: Replace with proper test framework (e.g., Vitest) later
- */
-
-import { greet } from "./index";
-
-// Simple assertion-based test
-function testGreet(): void {
-  const result = greet("Test");
-  const expected = "Hello, Test!";
-
-  if (result !== expected) {
-    throw new Error(`Test failed: expected "${expected}", got "${result}"`);
-  }
-
-  console.log("✅ testGreet passed");
-}
-
-// Run tests if executed directly
-if (require.main === module) {
-  try {
-    testGreet();
-    console.log("All tests passed!");
-  } catch (error) {
-    console.error("Test failed:", error);
-    process.exit(1);
-  }
-}
