@@ -34,7 +34,7 @@ repo-template-public/
 │  └─ workflows/
 │     ├─ ci.yml                   # build/lint/type/test
 │     ├─ pr-changelog-guard.yml   # validate PR body and suggest text (AI)
-│     ├─ ai-changelog.yml         # on merge: draft CHANGELOG and open PR
+│     ├─ ai-changelog.yml         # (optional/planned) on merge: draft CHANGELOG and open PR
 │     ├─ codeql.yml               # security scanning
 │     └─ dependabot.yml           # weekly updates
 ├─ .commitlintrc.cjs
@@ -55,13 +55,13 @@ repo-template-public/
 │  ├─ architecture.md             # Mermaid diagram of CI/PR/changelog flow
 │  └─ api/auto.md                 # optional AI‑generated docs
 ├─ scripts/
+│  ├─ changelog-detect.mjs        # PR body detection utility (current)
 │  ├─ automation/
-│  │  ├─ changelog_check.mjs      # PR body validator + (future) suggestion hook
-│  │  └─ changelog_generate.mjs   # draft release notes from commits (planned)
+│  │  └─ .gitkeep                 # placeholder for future automation scripts
 │  ├─ metrics/
-│  │  └─ log_build.mjs            # optional telemetry demo
+│  │  └─ .gitkeep                 # placeholder for optional telemetry demo
 │  └─ release/
-│     └─ prepare_release.mjs      # optional version hook
+│     └─ .gitkeep                 # placeholder for release helpers
 └─ src/
     ├─ index.ts
     └─ index.test.ts               # placeholder; swap for Vitest later
