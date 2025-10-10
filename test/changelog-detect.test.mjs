@@ -1,34 +1,24 @@
-import assert from "assert";
+import { describe, it, expect } from "vitest";
 import { hasChangelog } from "../scripts/changelog-detect.mjs";
 
-// Happy path
-const body1 = `## Changelog
-### Added
-- Add new feature
-`;
-assert.strictEqual(
-  hasChangelog(body1),
-  true,
-  "should detect changelog with bullet"
-);
+describe("changelog-detect", () => {
+  it("detects a changelog with a bullet", () => {
+    const body = `## Changelog\n### Added\n- Add new feature\n`;
+    expect(hasChangelog(body)).toBe(true);
+  });
 
-// Heading present but no bullet
-const body2 = `## Changelog
-### Added
-`;
-assert.strictEqual(hasChangelog(body2), false, "should fail when no bullet");
+  it("fails when heading present but no bullet", () => {
+    const body = `## Changelog\n### Added\n`;
+    expect(hasChangelog(body)).toBe(false);
+  });
 
-// Different heading style
-const body3 = `### Changelog:
-### Fixed
-- Fix bug
-`;
-assert.strictEqual(hasChangelog(body3), true, "should accept ### Changelog:");
+  it("accepts different heading styles", () => {
+    const body = `### Changelog:\n### Fixed\n- Fix bug\n`;
+    expect(hasChangelog(body)).toBe(true);
+  });
 
-// No heading
-const body4 = `Some description
-No changelog here
-`;
-assert.strictEqual(hasChangelog(body4), false, "should fail with no changelog");
-
-console.log("All changelog-detect tests passed");
+  it("fails when no changelog present", () => {
+    const body = `Some description\nNo changelog here\n`;
+    expect(hasChangelog(body)).toBe(false);
+  });
+});
