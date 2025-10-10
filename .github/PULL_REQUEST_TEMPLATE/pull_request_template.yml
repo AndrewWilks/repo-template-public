@@ -1,0 +1,76 @@
+name: Pull request
+description: Provide a clear summary, required changelog, and confirmations
+title: "<type>(<scope>): <short summary>"
+labels:
+  - documentation
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for contributing! Please complete the fields below.
+        - Use Conventional Commits in the PR title (e.g., `feat(api): add X`).
+        - Follow Keep a Changelog categories for the changelog.
+        - See the guide: [CHANGELOG_GUIDE.md](../../CHANGELOG_GUIDE.md)
+
+  - type: textarea
+    id: summary
+    attributes:
+      label: Summary
+      description: What does this change do and why?
+      placeholder: Short description of the change and context.
+    validations:
+      required: true
+
+  - type: textarea
+    id: changelog
+    attributes:
+      label: Changelog (required)
+      description: Use Keep a Changelog categories. Remove empty sections.
+      value: |
+        ### Added
+        - 
+
+        ### Changed
+        - 
+
+        ### Deprecated
+        - 
+
+        ### Removed
+        - 
+
+        ### Fixed
+        - 
+
+        ### Security
+        - 
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: Checklist
+      options:
+        - label: I used a Conventional Commit title
+          required: true
+        - label: I updated the Changelog block above
+          required: true
+        - label: Tests added/updated (if applicable)
+          required: false
+        - label: Docs updated (if applicable)
+          required: false
+
+  - type: input
+    id: related
+    attributes:
+      label: Related issues/PRs
+      description: Link relevant Issues/PRs (e.g., closes #123)
+      placeholder: closes #123, relates to #456
+
+  - type: textarea
+    id: breaking
+    attributes:
+      label: Breaking changes
+      description: Describe any breaking changes and required migration steps
+      placeholder: BREAKING CHANGE — describe impact and migration
