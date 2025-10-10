@@ -51,17 +51,25 @@ Case study and docs: see `docs/case-study/commitlint-case-study.md` for an in-de
 
 ```text
 repo-template-public/
-├─ .github/
-│  ├─ workflows/        # CI and automation
-│  └─ js_repo_tools/     # workflow helper scripts
-├─ configs/             # configuration fragments
-├─ docs/
-│  └─ repo/             # relocated community docs (CONTRIBUTING, CHANGELOG)
-├─ scripts/             # optional helper scripts / proxies
-├─ src/                 # TypeScript source
-├─ test/                # unit tests (Vitest)
-├─ package.json
-└─ README.md
+├── .github/
+│   ├── ISSUE_TEMPLATES/      # Issue & PR templates
+│   ├── js_repo_tools/         # Internal automation scripts
+│   ├── workflows/             # CI/CD workflows (ci, codeql, pr-changelog-guard, etc.)
+│   └── dependabot.yml
+├── .husky/                    # Git hooks (commitlint)
+├── configs/                   # Configuration examples/templates
+├── docs/
+│   ├── case-study/            # Design write-ups (commitlint case study)
+│   ├── repo/                  # Core documentation (CHANGELOG, CONTRIBUTING, SECURITY, etc.)
+│   └── README.md
+├── src/                       # Source code (TypeScript)
+├── test/                      # Additional test fixtures
+├── .commitlintrc.cjs          # Conventional Commits config
+├── cspell.json                # Spell-check dictionary
+├── package.json               # Dependencies & scripts
+├── tsconfig.json              # TypeScript config
+├── LICENSE                    # Apache-2.0
+└── README.md
 ```
 
 ---
