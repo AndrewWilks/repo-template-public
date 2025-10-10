@@ -157,6 +157,23 @@ We follow [Keep a Changelog](https://keepachangelog.com/) + SemVer. See [CHANGEL
 - After merges to main, the Copilot-assisted workflow drafts notes and opens a PR to update `CHANGELOG.md`.
 - Tag releases manually at first (`v0.1.0`). Later, consider Changesets or semantic‑release for automated versioning.
 
+### PR changelog guard
+
+This template includes a PR changelog guard that helps ensure every merged change has a human-readable entry in `CHANGELOG.md`.
+
+- When a PR is opened or edited, the guard checks the PR body for a `## Changelog` block. If missing or empty, the guard:
+  - Posts an actionable comment with a ready-to-copy changelog scaffold and a link to [CHANGELOG_GUIDE.md](CHANGELOG_GUIDE.md).
+  - Adds the label `needs-changelog` to help triage.
+  - Fails the workflow so branch protection can block merges until the changelog is added.
+
+- Once the author adds the changelog, editing the PR body will re-run checks automatically. You can also trigger a manual recheck by commenting `/recheck-changelog` (if enabled) — see repo workflows.
+
+- Maintainers can bypass the guard by applying a configured bypass label (for example `no-changelog-needed`) or when the PR carries an allowlisted label such as `chore` or `dependabot`.
+
+- The guard also supports lightweight category detection and can add triage labels (for example `security`, `feature`, `fix`) when the changelog contains the corresponding `### Security` / `### Added` / `### Fixed` sections.
+
+Note: enable GitHub Copilot for Pull Requests in the repository settings (Settings → Copilot → Pull requests) to get AI suggestions for drafting PR descriptions and changelog bullets directly in the PR UI.
+
 ## Contributing
 
 See [CONTRIBUTING.md](CONTRIBUTING.md). Highlights:
