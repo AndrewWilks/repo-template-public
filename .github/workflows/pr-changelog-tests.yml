@@ -20,4 +20,4 @@ jobs:
           node-version: 20
       - name: Run changelog-detect tests
         run: |
-          node test/changelog-detect.test.mjs
+          node .github/js_repo_tools/changelog/changelog-guard.test.mjs

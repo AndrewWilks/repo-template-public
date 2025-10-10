@@ -51,7 +51,7 @@ Key repo touch-points:
 - `.vscode/extensions.json` - pre‑recommended extensions (auto prompts).
 - `package.json` scripts: `commitlint`, `commitlint:msg`, `cz`.
 - `.github/workflows/commitlint.yml` - PR safety net (fetch-depth: 0).
-- `CONTRIBUTING.md` - quick onboarding and local command examples.
+- `docs/repo/CONTRIBUTING.md` - quick onboarding and local command examples.
 
 ## Commitlint rules (core)
 

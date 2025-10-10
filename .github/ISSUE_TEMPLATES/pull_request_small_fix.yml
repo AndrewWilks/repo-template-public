@@ -1,0 +1,51 @@
+name: "Pull Request — Small fix"
+description: "Use this template for very small fixes (typos, formatting, small docs updates, single-line bug fixes). Keep changes minimal so reviews are quick."
+title: "fix: "
+labels:
+  - "type:fix"
+  - "size/XS"
+assignees:
+  - "@${{ github.actor }}"
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for the contribution. Use this form for small, focused fixes only. If the change affects behavior, tests, or multiple components, consider using the standard PR template or opening an issue first.
+  - type: input
+    id: summary
+    attributes:
+      label: Short summary
+      description: One-line description of the change (will be used in the PR title if left blank)
+      placeholder: Fix typo in README or Correct null-check in utils/parse
+  - type: textarea
+    id: changes
+    attributes:
+      label: What changed
+      description: Describe what you changed and why. Keep it concise.
+      placeholder: >
+        Fixed a typo in the README; no behavioural changes.
+  - type: textarea
+    id: files
+    attributes:
+      label: Files touched (optional)
+      description: List the main files modified (helpful for quick review)
+      placeholder: src/foo.js, README.md
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: Checklist
+      description: Confirm the minimal requirements for a small fix
+      options:
+        - label: Change is small and focused (<= 5 files, minimal diff)
+          value: small
+        - label: No public API breaking changes
+          value: non-breaking
+        - label: CI passes locally / checks are green
+          value: ci
+        - label: No new tests required (explain in "What changed")
+          value: no-tests
+  - type: input
+    id: reviewers
+    attributes:
+      label: Suggested reviewers (optional)
+      description: Mention teammates or teams who should review

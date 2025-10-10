@@ -2,7 +2,7 @@
 
 This project follows the Contributor Covenant, version 2.1.
 
-# Our Pledge
+## Our Pledge
 
 We as members, contributors, and maintainers pledge to make participation in this
 project and our community a harassment‑free experience for everyone, regardless of

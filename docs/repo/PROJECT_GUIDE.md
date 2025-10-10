@@ -25,46 +25,7 @@ TL;DR: This template bakes in DevOps hygiene (CI, security, changelogs), Convent
 ## 2. Repository Layout
 
 ```text
-repo-template-public/
-├─ .github/
-│  ├─ ISSUE_TEMPLATE/
-│  │  ├─ bug_report.yml
-│  │  └─ feature_request.yml
-│  ├─ PULL_REQUEST_TEMPLATE.md
-│  └─ workflows/
-│     ├─ ci.yml                   # build/lint/type/test
-│     ├─ pr-changelog-guard.yml   # validate PR body and suggest text (AI)
-│     ├─ ai-changelog.yml         # (optional/planned) on merge: draft CHANGELOG and open PR
-│     ├─ codeql.yml               # security scanning
-│     └─ dependabot.yml           # weekly updates
-├─ .commitlintrc.cjs
-├─ .editorconfig
-├─ .gitattributes
-├─ .gitignore
-├─ LICENSE                        # Apache-2.0 (employer‑friendly)
-├─ README.md
-├─ PROJECT_GUIDE.md               # ← this file
-├─ CONTRIBUTING.md
-├─ CODE_OF_CONDUCT.md
-├─ SECURITY.md
-├─ CHANGELOG.md
-├─ CHANGELOG_GUIDE.md
-├─ package.json
-├─ tsconfig.json
-├─ docs/
-│  ├─ architecture.md             # Mermaid diagram of CI/PR/changelog flow
-│  └─ api/auto.md                 # optional AI‑generated docs
-├─ scripts/
-│  ├─ changelog-detect.mjs        # PR body detection utility (current)
-│  ├─ automation/
-│  │  └─ .gitkeep                 # placeholder for future automation scripts
-│  ├─ metrics/
-│  │  └─ .gitkeep                 # placeholder for optional telemetry demo
-│  └─ release/
-│     └─ .gitkeep                 # placeholder for release helpers
-└─ src/
-    ├─ index.ts
-    └─ index.test.ts               # placeholder; swap for Vitest later
+TODO: update to the new cleaner structure
 ```
 
 ---
