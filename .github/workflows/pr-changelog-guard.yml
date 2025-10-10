@@ -80,7 +80,7 @@ jobs:
             const guideUrl = process.env.CHANGELOG_GUIDE_URL || 'CHANGELOG_GUIDE.md';
 
             if (needsChangelog) {
-              const scaffold = `### Added\n- \n\n### Changed\n- \n\n### Fixed\n- \n\n### Security\n- `;
+              const scaffold = `### Added\n- Your change description here\n\n### Changed\n- Your change description here\n\n### Fixed\n- Your change description here\n\n### Security\n- Your change description here`;
               const comment = `Thanks — I couldn't find a completed **## Changelog** section in this PR. Please add one before merge.\n\n**Quick scaffold (copy into your PR body):**\n\n\n\n${scaffold}\n\nRead the guide: ${guideUrl}\n\nAfter updating, edit the PR body to re-run checks or comment with "/recheck-changelog".`;
               await github.rest.issues.createComment({
                 owner: context.repo.owner,
