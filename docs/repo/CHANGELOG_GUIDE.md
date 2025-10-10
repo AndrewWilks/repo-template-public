@@ -91,4 +91,4 @@ If a section has no entries for a release, omit it in that release block (keep i
 
 ---
 
-See current history in [`docs/repo/CHANGELOG.md`](docs/repo/CHANGELOG.md).
+See current history in [`docs/repo/CHANGELOG.md`](CHANGELOG.md).
