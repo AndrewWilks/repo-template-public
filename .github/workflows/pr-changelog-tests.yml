@@ -2,12 +2,12 @@ name: PR Changelog Tests
 
 on:
   push:
-    branches: [ main, 'ci/**', 'docs/**' ]
+    branches: [main, "ci/**", "docs/**"]
   pull_request:
     paths:
-      - '.github/workflows/pr-changelog-guard.yml'
-      - 'scripts/**'
-      - 'test/**'
+      - ".github/workflows/pr-changelog-guard.yml"
+      - "scripts/**"
+      - "test/**"
 
 jobs:
   test:

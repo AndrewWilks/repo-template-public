@@ -13,7 +13,7 @@
     "commitlint:msg": "commitlint --edit \"$1\"",
     "spell": "cspell \"docs/**\" \"src/**\" \"*.md\"",
     "cz": "cz",
-  "test": "node --experimental-modules test/changelog-detect.test.mjs || true",
+    "test": "node --experimental-modules test/changelog-detect.test.mjs || true",
     "verify": "pnpm lint && pnpm typecheck && pnpm build && pnpm test"
   },
   "keywords": [

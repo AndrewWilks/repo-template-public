@@ -37,6 +37,7 @@ Case study and docs: see `docs/case-study/commitlint-case-study.md` for an in-de
   - [CI/CD](#cicd)
   - [Security](#security)
   - [Changelog \& releases](#changelog--releases)
+    - [PR changelog guard](#pr-changelog-guard)
   - [Contributing](#contributing)
     - [Conventional Commits](#conventional-commits)
   - [Roadmap](#roadmap)
@@ -162,6 +163,7 @@ We follow [Keep a Changelog](https://keepachangelog.com/) + SemVer. See [CHANGEL
 This template includes a PR changelog guard that helps ensure every merged change has a human-readable entry in `CHANGELOG.md`.
 
 - When a PR is opened or edited, the guard checks the PR body for a `## Changelog` block. If missing or empty, the guard:
+
   - Posts an actionable comment with a ready-to-copy changelog scaffold and a link to [CHANGELOG_GUIDE.md](CHANGELOG_GUIDE.md).
   - Adds the label `needs-changelog` to help triage.
   - Fails the workflow so branch protection can block merges until the changelog is added.
