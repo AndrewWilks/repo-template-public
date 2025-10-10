@@ -2,7 +2,7 @@
 
 Thanks for helping improve this template. This document covers local setup, workflow, commit conventions, and how to get help.
 
-Related docs: [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md) • [SECURITY.md](SECURITY.md) • [README.md](README.md)
+Related docs: [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md) • [SECURITY.md](SECURITY.md) • [README.md](../../README.md)
 
 ## Quick Start
 
@@ -57,7 +57,7 @@ Examples:
 - fix(auth): handle expired tokens in refresh flow
 - docs: update README with contributing guidelines
 
-Need deeper rationale? Case study: [`docs/case-study/commitlint-case-study.md`](docs/case-study/commitlint-case-study.md)
+Need deeper rationale? Case study: [`docs/case-study/commitlint-case-study.md`](../case-study/commitlint-case-study.md)
 
 ### Local Commit Checks
 

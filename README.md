@@ -19,7 +19,7 @@ A public GitHub template repository that bakes in DevOps hygiene and optional AI
 - 📚 Docs-as-code with architecture diagram and contributor guides
 - ⚖️ Employer‑friendly Apache‑2.0 license
 
-New here? Read the detailed design/build guide: [PROJECT_GUIDE.md](PROJECT_GUIDE.md)
+New here? Read the detailed design/build guide: [PROJECT_GUIDE.md](docs/repo/PROJECT_GUIDE.md)
 
 Case study and docs: see `docs/case-study/commitlint-case-study.md` for an in-depth write-up and examples (you can remove it from your fork if you prefer a smaller template).
 
@@ -123,7 +123,7 @@ Planned automation (optional): a future workflow can collect commits since last 
 - Preview deploy (develop) vs release (main)
 - SBOM & license scan
 
-See the Mermaid diagram in [docs/architecture.md](docs/architecture.md).
+See the Mermaid diagram in [docs/architecture.md](docs/repo/architecture.md).
 
 ## Security
 
@@ -140,9 +140,9 @@ Case study: A short write-up describing the commitlint design and trade-offs is 
 
 ## Changelog & releases
 
-We follow [Keep a Changelog](https://keepachangelog.com/) + SemVer. See [docs/repo/CHANGELOG.md](docs/repo/CHANGELOG.md) for history and [CHANGELOG_GUIDE.md](./docs/CHANGELOG_GUIDE.md) for how to write entries.
+We follow [Keep a Changelog](https://keepachangelog.com/) + SemVer. See [docs/repo/CHANGELOG.md](docs/repo/CHANGELOG.md) for history and [CHANGELOG_GUIDE.md](docs/repo/CHANGELOG_GUIDE.md) for how to write entries.
 
-- Write PRs with a `## Changelog` section (example entries in [CHANGELOG_GUIDE.md](./docs/CHANGELOG_GUIDE.md)).
+- Write PRs with a `## Changelog` section (example entries in [CHANGELOG_GUIDE.md](docs/repo/CHANGELOG_GUIDE.md)).
 - After merges to main, the Copilot-assisted workflow drafts notes and opens a PR to update `docs/repo/CHANGELOG.md`.
 - Tag releases manually at first (`v0.1.0`). Later, consider Changesets or semantic‑release for automated versioning.
 
@@ -152,7 +152,7 @@ This template includes a PR changelog guard that helps ensure every merged chang
 
 - When a PR is opened or edited, the guard checks the PR body for a `## Changelog` block. If missing or empty, the guard:
 
-  - Posts an actionable comment with a ready-to-copy changelog scaffold and a link to [CHANGELOG_GUIDE.md](CHANGELOG_GUIDE.md).
+  - Posts an actionable comment with a ready-to-copy changelog scaffold and a link to [CHANGELOG_GUIDE.md](docs/repo/CHANGELOG_GUIDE.md).
   - Adds the label `needs-changelog` to help triage.
   - Fails the workflow so branch protection can block merges until the changelog is added.
 
@@ -249,4 +249,4 @@ Please retain the `LICENSE` file and update `NOTICE` if you add third‑party co
 
 Copyright © 2025 Andrew Wilks.
 
-Licensed under the Apache License 2.0. See [LICENSE](LICENSE) for full terms and [NOTICE](/docs/repo/NOTICE) for attribution updates.
+Licensed under the Apache License 2.0. See [LICENSE](LICENSE) for full terms and [NOTICE](docs/repo/NOTICE) for attribution updates.
