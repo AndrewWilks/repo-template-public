@@ -5,6 +5,7 @@ Thank you for your contribution!
 
 Please fill out the sections below. Submissions without a changelog will be asked to update before review.
 -->
+
 ## Summary
 
 Describe what this PR changes and why.
@@ -17,24 +18,17 @@ Copy one or more categories and add bullets; delete empty ones before submitting
 
 ### Added
 
-
 ### Changed
-
 
 ### Deprecated
 
-
 ### Removed
-
 
 ### Fixed
 
-
 ### Security
 
-
 ## Checklist
-
 
 ## Related
 
