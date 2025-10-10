@@ -50,7 +50,18 @@ Case study and docs: see `docs/case-study/commitlint-case-study.md` for an in-de
 ## What’s inside
 
 ```text
- TODO: add tree output
+repo-template-public/
+├─ .github/
+│  ├─ workflows/        # CI and automation
+│  └─ js_repo_tools/     # workflow helper scripts
+├─ configs/             # configuration fragments
+├─ docs/
+│  └─ repo/             # relocated community docs (CONTRIBUTING, CHANGELOG)
+├─ scripts/             # optional helper scripts / proxies
+├─ src/                 # TypeScript source
+├─ test/                # unit tests (Vitest)
+├─ package.json
+└─ README.md
 ```
 
 ---
