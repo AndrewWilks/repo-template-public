@@ -5,14 +5,14 @@ export async function run(github, context, core, env) {
     owner: context.repo.owner,
     repo: context.repo.repo,
     issue_number: prNumber,
-    body: 'Re-running PR changelog guard as requested...',
+    body: "Re-running PR changelog guard as requested...",
   });
 
   // Re-run by calling the checks API: request a re-run of the last workflow run for this PR
   const runs = await github.rest.actions.listWorkflowRunsForRepo({
     owner: context.repo.owner,
     repo: context.repo.repo,
-    workflow_id: 'pr-changelog-guard.yml',
+    workflow_id: "pr-changelog-guard.yml",
     per_page: 10,
   });
   if (runs.data.workflow_runs.length) {

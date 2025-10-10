@@ -22,7 +22,7 @@ jobs:
         with:
           script: |
             (async () => {
-              const module = await import(process.env.GITHUB_WORKSPACE + '/.github/js_repo_tools/pr-changelog-guard.mjs');
+              const module = await import(process.env.GITHUB_WORKSPACE + '/.github/js_repo_tools/changelog/pr-changelog-guard.mjs');
               await module.run(github, context, core, { CHANGELOG_GUIDE_URL: process.env.CHANGELOG_GUIDE_URL, BYPASS_LABELS: process.env.BYPASS_LABELS, AUTHOR_ALLOWLIST: process.env.AUTHOR_ALLOWLIST });
             })();
         env:

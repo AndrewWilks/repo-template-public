@@ -23,6 +23,6 @@ jobs:
         with:
           script: |
             (async () => {
-              const module = await import(process.env.GITHUB_WORKSPACE + '/.github/js_repo_tools/pr-changelog-recheck.mjs');
+              const module = await import(process.env.GITHUB_WORKSPACE + '/.github/js_repo_tools/changelog/pr-changelog-recheck.mjs');
               await module.run(github, context, core, {});
             })();
